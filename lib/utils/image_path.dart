@@ -1,0 +1,37 @@
+class ImagePath{
+  static const  bacgroundImagePath1 = "assets/Background.png";
+  // static const  happyHeartLogo = "assets/happyHeartNewLogo.png";
+  // static const  happyHeartLogo = "assets/logo2.png";
+  static const  happyHeartLogo = "assets/logo3.png";
+  static const  transfomationaljorney = "assets/transfomationaljorney.png";
+  static const  girlLogo = "assets/Girl.png";
+  static const videoLogo = "assets/videologo.png";
+  static const boyLogo = "assets/boy.png";
+  static const handLogo = "assets/hand.png";
+  static const veficationLogo = "assets/otpverfication.png";
+  static const yellowBackground = "assets/yellowBackgroud.png";
+  static const smallhhlogo = "assets/smallhappyheartlogo.png";
+  static const homeAnxiety = "assets/homeAnxiety.png";
+  static const fearOfDarkness = "assets/fearofdarkness.png";
+  static const bedWetting = "assets/bedwetting.png";
+  static const nintoThirteen = "assets/nineToThirteen.png";
+  static const parents = "assets/parents.png";
+  static const thirteenPlus = "assets/thirteenPlus.png";
+  static const  zeroTONine = "assets/zeroToNine.png";
+  static const  updateProfile = "assets/updateProfilelogo.png";
+  static const  parentChildCommunication = "assets/parentChildCommunication.png";
+  static const  harmoniousLiving = "assets/harmoniousLiving.png";
+  static const  singleParentChild = "assets/singleParentChild.png";
+  static const  workingParents = "assets/workingParents.png";
+  static const  bulling = "assets/bulling.png";
+  static const  peerPressure = "assets/peerPressur.png";
+  static const  shyness = "assets/shyness.png";
+  static const  expressFeeling = "assets/expressfeeling.png";
+  static const  inDifferenceToOther = "assets/indefferenceToOther.png";
+  static const  complainingAndWinningBehaviour = "assets/complainingAndWinningBehaviour.png";
+  static const  covid19 = "assets/covid19.png";
+  static const  schoolAnxiety = "assets/schoolAnixety.png";
+  static const  fearOfAuthority = "assets/fearOfAuthority.png";
+  static const  pinklogo = "assets/pinkheart.png";
+  static const  green = "assets/bck.png";
+}

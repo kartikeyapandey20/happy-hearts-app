@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "991332688559",
+    "project_id": "happyhearts-aed0a",
+    "storage_bucket": "happyhearts-aed0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991332688559:android:ed9b42d0225f2c84c9ea5a",
+        "android_client_info": {
+          "package_name": "com.itufuturz.happyhearts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991332688559-4ltaa0tihoqrd91edoslkfeo469rnek2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHEL0QiWs-MjXTkQSEAFuDmkTruM6QrL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991332688559-4ltaa0tihoqrd91edoslkfeo469rnek2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "991332688559-c0glod1rnaqqrn0jjs8cu6nkqblnld8s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.itufuturz.happyhearts"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
