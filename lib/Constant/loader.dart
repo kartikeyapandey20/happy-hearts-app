@@ -19,7 +19,7 @@ class _HeartLoaderState extends State<HeartLoader>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1200),
+      duration: Duration(milliseconds: 1500),
     )..repeat(reverse: true);
 
     _opacityAnimation = Tween<double>(begin: 0.3, end: 1.0).animate(

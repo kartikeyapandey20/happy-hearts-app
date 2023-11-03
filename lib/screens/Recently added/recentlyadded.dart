@@ -114,6 +114,7 @@ class _RecentlyAddedState extends State<RecentlyAdded> {
                               "${data[0].audios![index].gujaratiAudioUrl}",
                               zapInstruction:
                               data[0].audios![index].audioInstruction!,
+                              audioId: data[0].audios![index].sId!,
                             );
                           }),
                     );

@@ -60,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
               "childName", response.data![0].child!.childName!);
           preferences.setString("mobile", response.data![0].mobileNumber!);
           preferences.setString("email", response.data![0].email!);
+          preferences.setString("childId", response.data![0].child!.sId!);
           Navigator.of(context).pop();
           Navigator.of(context).push(
             MaterialPageRoute(

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:happyheart/screens/playrecording/playrecording.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../data/api_calling/user_api_calling/audio_status_api_calling.dart';
+import '../data/model/audio_status_model.dart';
 import '../utils/colors.dart';
 import 'CustomText.dart';
+import 'loader.dart';
 
 class CustomMusicIndicator extends StatefulWidget {
   final String Image;
@@ -15,6 +19,7 @@ class CustomMusicIndicator extends StatefulWidget {
   final String englishUrl;
   final String hindiUrl;
   final String gujaratiUrl;
+  final String audioId;
   final List<String> zapInstruction;
   CustomMusicIndicator(
       {Key? key,
@@ -28,7 +33,7 @@ class CustomMusicIndicator extends StatefulWidget {
       required this.englishUrl,
       required this.hindiUrl,
       required this.gujaratiUrl,
-      required this.zapInstruction})
+      required this.zapInstruction, required this.audioId})
       : super(key: key);
 
   @override
@@ -36,19 +41,76 @@ class CustomMusicIndicator extends StatefulWidget {
 }
 
 class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
+  String? userId;
+
+  String? childId;
+
+  getUserId() async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    userId = preferences.getString("userId");
+    childId = preferences.getString("childId");
+  }
+  Future<void> showLoader() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: HeartLoader(),
+          ),
+        );
+      },
+    );
+  }
+  void checkAudioStatus(String userid ,String childId,String audioId ) async {
+    showLoader(); // Show the loader dialog
+
+    try {
+      final AudioStatusModel? response =
+      await AudioApiCalling().audioStatusApiCalling(userId: userid,childId: childId,audioId: audioId);
+
+      if (response != null && response.isSuccess!) {
+        if (response.data!.audioPurchase!) {
+          Navigator.of(context).pop();
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => PlayRecording(
+                audioName: widget.audioName,
+                englishUrl: widget.englishUrl,
+                hindiUrl: widget.hindiUrl,
+                gujaratiUrl: widget.gujaratiUrl,
+                zapInstruction: widget.zapInstruction,
+              )));
+
+
+        } else {
+          // User does not exist
+          Navigator.of(context).pop();
+          Fluttertoast.showToast(msg: "Audio Not Purchased");
+        }
+      } else {
+        // Error occurred during API call
+        Fluttertoast.showToast(msg: "Failed to login. Please try again.");
+      }
+    } catch (e) {
+      print('API request failed with error: $e');
+      Fluttertoast.showToast(msg: "Failed to login. Please try again.");
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserId();
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => PlayRecording(
-                  audioName: widget.audioName,
-                  englishUrl: widget.englishUrl,
-                  hindiUrl: widget.hindiUrl,
-                  gujaratiUrl: widget.gujaratiUrl,
-                  zapInstruction: widget.zapInstruction,
-                )));
+        checkAudioStatus(userId!,childId!, widget.audioId);
       },
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,

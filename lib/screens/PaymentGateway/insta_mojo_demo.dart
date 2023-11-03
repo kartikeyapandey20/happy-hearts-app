@@ -1,11 +1,27 @@
 import 'dart:convert';
+import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:happyheart/screens/Dashboard/dashBoard.dart';
 import 'package:http/http.dart' as http;
 
+import '../../data/api_calling/user_api_calling/purchase_audio_api_calling.dart';
+
 class InstaMojoDemo extends StatefulWidget {
+  final String userId;
+  final String childId;
+  final String audioId;
+  final String duration;
+  InstaMojoDemo(
+      {Key? key,
+      required this.userId,
+      required this.childId,
+      required this.audioId,
+      required this.duration})
+      : super(key: key);
   @override
   _InstaMojoDemoState createState() => _InstaMojoDemoState();
 }
@@ -81,9 +97,31 @@ class _InstaMojoDemoState extends State<InstaMojoDemo> {
         // Navigator.of(context).pushReplacement(
         //     MaterialPageRoute(
         //         builder: (context) => ()));
+        PurchaseAudioApiCalling().purchaseAudioApiCalling(
+            userId: widget.userId,
+            childId: widget.childId,
+            audioId: widget.audioId,
+            duration: widget.duration,
+            paymentId: id).then((value) {
+              if(value==null)
+                {
+                  // Fluttertoast.showToast(msg: "Unable to Purchase the audio");
+                }
+              else{
+                if(value.isSuccess!)
+                {
+                  // Fluttertoast.showToast(msg: value.message!);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => DashBoard()), (route) => false);
+                }
+                else{
+                  Fluttertoast.showToast(msg: "Audio already purchased or some error occurred");
+                }
+              }
+        });
 //payment is successful.
       } else {
         print('failed');
+        Fluttertoast.showToast(msg: "Purchase Failed");
 //payment failed or pending.
       }
     } else {

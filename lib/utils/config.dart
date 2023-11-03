@@ -9,4 +9,6 @@ class Config {
   static const getUserSubscription = "getUserSubscription";
   static const getCategory = "getCategory";
   static const getAudioByCategory = "getAudioByCategory";
+  static const purchaseAudio = "addPurchase";
+  static const audioStatus = "audioStatus";
 }

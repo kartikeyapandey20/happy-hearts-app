@@ -317,22 +317,22 @@ class _GetStartedState extends State<GetStarted> {
             SizedBox(
               height: MediaQuery.of(context).size.height / 9,
             ),
-            CustomeTextButton(
-              onTap: InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SubscriptionPage(),
-                      ));
-                },
-              ),
-              width: MediaQuery.of(context).size.width / 3,
-              borderColor: Color(0xFFFFFFFF),
-              bacgroundColor: Color(0xFFFA4A71),
-              text: "Avail Now",
-              borderWidth: 2,
-            ),
+            // CustomeTextButton(
+            //   onTap: InkWell(
+            //     onTap: () {
+            //       Navigator.push(
+            //           context,
+            //           MaterialPageRoute(
+            //             builder: (context) => SubscriptionPage(),
+            //           ));
+            //     },
+            //   ),
+            //   width: MediaQuery.of(context).size.width / 3,
+            //   borderColor: Color(0xFFFFFFFF),
+            //   bacgroundColor: Color(0xFFFA4A71),
+            //   text: "Avail Now",
+            //   borderWidth: 2,
+            // ),
           ],
         ),
       )

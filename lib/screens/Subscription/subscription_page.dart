@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:happyheart/Constant/background.dart';
+import 'package:happyheart/Constant/custom_purchase_audio.dart';
 import 'package:happyheart/data/model/subscribtion_model.dart';
-import 'package:happyheart/data/api_calling/subscription_api_calling.dart';
+// import 'package:happyheart/data/api_calling/subscription_api_calling.dart';
 import 'package:happyheart/Constant/CustomText.dart';
 import 'package:happyheart/Constant/subscriptionContainer.dart';
 import 'package:happyheart/utils/colors.dart';
 import 'package:happyheart/utils/image_path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Constant/customMusicDetector.dart';
+import '../../data/api_calling/categoy_api_calling/category_api_calling.dart';
+import '../../data/model/audio_category_model.dart';
+import '../../data/model/category_model.dart';
+import '../../utils/config.dart';
 
 class SubscriptionPage extends StatefulWidget {
   @override
@@ -15,12 +23,24 @@ class SubscriptionPage extends StatefulWidget {
 class _SubscriptionPageState extends State<SubscriptionPage> {
   Future<SubscriptionModel>? _subscriptionModelFuture;
 
+  String currentCategoryId = "64fac6775f71a268ac96db68";
+  Future<AudioCategoryModel>? _futureAudioByCategory;
+
+  String?  userId;
+  String? childId;
+  getUserId() async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    userId = preferences.getString("userId");
+    childId = preferences.getString("childId");
+  }
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    _subscriptionModelFuture = SubscriptionUserApiCalling().subscriptionUserApiCalling();
+    getUserId();
+    _futureAudioByCategory =
+        CategoryApiCalling().getAudioByCategoryApiCalling(currentCategoryId!);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,141 +68,52 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                 ],
               ),
             ),
-            Expanded(
-              child: FutureBuilder<SubscriptionModel>(
-                future: _subscriptionModelFuture,
+            FutureBuilder<AudioCategoryModel>(
+                future: _futureAudioByCategory,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Expanded(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.appPrimaryColor,
+                        ),
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text("Error Occurred"));
+                  } else if (snapshot.data!.data!.isEmpty) {
                     return Center(
                       child: CircularProgressIndicator(
                         color: AppColors.appPrimaryColor,
                       ),
                     );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: CustomText(
-                        text: "An error occurred",
-                        fontSize: 14,
-                        textColor: AppColors.black,
-                      ),
-                    );
-                  } else if (!snapshot.hasData || snapshot.data!.data!.isEmpty) {
-                    return Center(
-                      child: CustomText(
-                        text: "No Subscription Available",
-                        fontSize: 14,
-                        textColor: AppColors.black,
-                      ),
-                    );
                   } else {
-                    SubscriptionModel subscriptionModel = snapshot.data!;
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: subscriptionModel.data!.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          child: ContainerGlassConst(
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20),
-                                  ),
-                                  child: ContainerGlassConst(
-                                    radius: 20,
-                                    topPadding: 0,
-                                    rightPadding: 0,
-                                    leftPadding: 0,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Column(
-                                      children: [
-                                        ContainerConst(
-                                          topPadding: 0,
-                                          leftPadding: 0,
-                                          rightPadding: 0,
-                                          color: AppColors.hhpink,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 16.0,
-                                              right: 16.0,
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    CustomText(
-                                                      text:
-                                                      "${subscriptionModel.data![index].subscriptionName}",
-                                                      fontSize: 20,
-                                                      textColor: AppColors.black,
-                                                    ),
-                                                    CustomText(
-                                                      text:
-                                                      "${subscriptionModel.data![index].subscriptionDescription}",
-                                                      fontSize: 12,
-                                                      textColor: AppColors.black,
-                                                    ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    ContainerGradientConst(
-                                                      topPadding: 15,
-                                                      rightPadding: 0,
-                                                      leftPadding: 0,
-                                                      radius: 7,
-                                                      color: [
-                                                        AppColors.appPrimaryColor
-                                                            .withOpacity(0.5),
-                                                        AppColors.hhyellow
-                                                      ],
-                                                      border: Border.all(
-                                                        width: 2,
-                                                        color: AppColors.transhparent,
-                                                      ),
-                                                      child: CustomText(
-                                                        text:
-                                                        "${subscriptionModel.data![index].duration} Days",
-                                                        fontSize: 20,
-                                                        textColor: AppColors.black,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                    ),
-                                                    CustomText(
-                                                      text:
-                                                      "₹  ${subscriptionModel.data![index].price}/-",
-                                                      fontSize: 20,
-                                                      textColor: AppColors.black,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                    var data = snapshot.data!.data;
+                    return Expanded(
+                      child: ListView.builder(
+                          itemCount: data![0].audios!.length,
+                          itemBuilder: (context, index) {
+                            return CustomPurchaseAudio(
+                              Image:
+                              "${Config.imageUserUrl}${data[0].audios![index].imageUrl}",
+                              text: "${data[0].audios![index].audioName}",
+                              imageCirucularColor: index % 3 == 0
+                                  ? AppColors.hhgreen
+                                  : index % 3 == 1
+                                  ? AppColors.hhblue
+                                  : AppColors.hhpink,
+                              ContainerColor: index % 3 == 0
+                                  ? AppColors.hhgreen
+                                  : index % 3 == 1
+                                  ? AppColors.hhblue
+                                  : AppColors.hhpink,
+                              audioName: "${data[0].audios![index].musicName}", audioId: data[0].audios![index].sId!, userId: userId!, childId: childId!, duration: data[0].audios![index].audioDuration!, price: data[0].audios![index].audioPrice!,
+
+                            );
+                          }),
                     );
                   }
-                },
-              ),
-            ),
+                }),
           ],
         ),
       ),

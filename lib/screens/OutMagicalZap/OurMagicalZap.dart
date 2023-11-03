@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:happyheart/Constant/CustomText.dart';
 import 'package:happyheart/Constant/background.dart';
 import 'package:happyheart/Constant/customMusicDetector.dart';
 import 'package:happyheart/Constant/loader.dart';
 import 'package:happyheart/data/api_calling/categoy_api_calling/category_api_calling.dart';
+import 'package:happyheart/data/api_calling/user_api_calling/audio_status_api_calling.dart';
+import 'package:happyheart/data/model/audio_status_model.dart';
 import 'package:happyheart/data/model/category_model.dart';
 import 'package:happyheart/utils/colors.dart';
 import 'package:happyheart/utils/image_path.dart';
@@ -211,6 +214,7 @@ class _OurMagicalZapState extends State<OurMagicalZap> {
                                   "${data[0].audios![index].gujaratiAudioUrl}",
                               zapInstruction:
                                   data[0].audios![index].audioInstruction!,
+                              audioId: data[0].audios![index].sId!,
                             );
                           }),
                     );
