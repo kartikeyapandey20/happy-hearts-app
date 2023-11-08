@@ -4,7 +4,7 @@ import 'package:happyheart/screens/Dashboard/dashBoard.dart';
 import 'package:happyheart/screens/getStarted/get_started.dart';
 import 'package:happyheart/utils/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Constant/background.dart';
+import '../../Constant/background.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

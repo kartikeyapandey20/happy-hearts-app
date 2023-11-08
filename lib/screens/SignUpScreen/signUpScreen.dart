@@ -10,7 +10,7 @@ import 'package:happyheart/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'howOldIsYourChildScreen/how_old_is_your_child_screen.dart';
+import '../howOldIsYourChildScreen/how_old_is_your_child_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);

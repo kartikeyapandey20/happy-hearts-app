@@ -7,7 +7,7 @@ import 'package:happyheart/utils/colors.dart';
 import '../../Constant/background.dart';
 import '../../Constant/customTextButtton.dart';
 import '../../utils/image_path.dart';
-import '../signUpScreen.dart';
+import '../SignUpScreen/signUpScreen.dart';
 import 'package:video_player/video_player.dart';
 
 class GetStarted extends StatefulWidget {

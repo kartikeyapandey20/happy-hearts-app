@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:happyheart/Constant/background.dart';
 import 'package:happyheart/screens/Notification/Notification.dart';
 import 'package:happyheart/screens/OutMagicalZap/OurMagicalZap.dart';
-import 'package:happyheart/screens/PaymentGateway/insta_mojo_demo.dart';
-import 'package:happyheart/screens/PaymentGateway/updated_payment_getway.dart';
 import 'package:happyheart/screens/Recently%20added/recentlyadded.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_capitalize_extension/string_capitalize_extension.dart';
@@ -30,12 +28,14 @@ class _DashBoardState extends State<DashBoard> {
   String name = "";
   int currentQuoteIndex = 0;
   String? userID;
+  String? childId;
   int carouselIndex = 0;
   CarouselController carouselController = CarouselController();
   loadDataFromSession() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     name = preferences.getString("firstName")!;
     userID = preferences.getString("userId");
+    childId = preferences.getString("childId");
     setState(() {});
   }
 
@@ -55,14 +55,6 @@ class _DashBoardState extends State<DashBoard> {
     });
   }
 
-  final List<String> imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-    'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-  ];
   List<String> dailyQuotes = [
     "There is a wisdom in children, a kind of knowing, a kind of believing, that we, as adults, do not have. There is a time when a kingdom needs its children.",
     "A child’s life is like a piece of paper on which every passerby leaves a mark.",
@@ -194,98 +186,6 @@ class _DashBoardState extends State<DashBoard> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // SizedBox(
-                      //   height: ,
-                      // ),
-                      // Column(
-                      //   children: [
-                      //     Row(
-                      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //       children: [
-                      //         Text(
-                      //           "Trending Offers & Services",
-                      //         ),
-                      //       ],
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 18.0),
-                      //       child: CarouselSlider(
-                      //           items: imgList
-                      //               .map((item) => Container(
-                      //                     width:
-                      //                         MediaQuery.of(context).size.width,
-                      //                     decoration: BoxDecoration(
-                      //                         color: Colors.white,
-                      //                         borderRadius:
-                      //                             BorderRadius.circular(10)),
-                      //                     child: Center(
-                      //                         child: ClipRRect(
-                      //                             borderRadius:
-                      //                                 BorderRadius.circular(10),
-                      //                             child: Image.network(
-                      //                               item,
-                      //                               height:
-                      //                                   MediaQuery.of(context)
-                      //                                           .size
-                      //                                           .height *
-                      //                                       0.16,
-                      //                               width:
-                      //                                   MediaQuery.of(context)
-                      //                                       .size
-                      //                                       .width,
-                      //                               fit: BoxFit.fill,
-                      //                             ))),
-                      //                   ))
-                      //               .toList(),
-                      //           carouselController: carouselController,
-                      //           options: CarouselOptions(
-                      //             height:
-                      //                 MediaQuery.of(context).size.height * 0.16,
-                      //             aspectRatio: 16 / 9,
-                      //             viewportFraction: 1,
-                      //             initialPage: 0,
-                      //             enableInfiniteScroll: true,
-                      //             reverse: false,
-                      //             autoPlay: true,
-                      //             autoPlayInterval: const Duration(seconds: 3),
-                      //             autoPlayAnimationDuration:
-                      //                 const Duration(milliseconds: 800),
-                      //             autoPlayCurve: Curves.fastOutSlowIn,
-                      //             enlargeCenterPage: true,
-                      //             onPageChanged: (val, frf) {
-                      //               carouselIndex = val;
-                      //               setState(() {});
-                      //             },
-                      //             scrollDirection: Axis.horizontal,
-                      //           )),
-                      //     ),
-                      //     Row(
-                      //       mainAxisAlignment: MainAxisAlignment.center,
-                      //       children: imgList.asMap().entries.map((entry) {
-                      //         return GestureDetector(
-                      //           onTap: () =>
-                      //               carouselController.animateToPage(entry.key),
-                      //           child: Container(
-                      //             width: carouselIndex == entry.key
-                      //                 ? MediaQuery.of(context).size.width *
-                      //                     0.025
-                      //                 : MediaQuery.of(context).size.width *
-                      //                     0.015,
-                      //             height:
-                      //                 MediaQuery.of(context).size.height * 0.02,
-                      //             margin: const EdgeInsets.symmetric(
-                      //                 vertical: 8.0, horizontal: 4.0),
-                      //             decoration: BoxDecoration(
-                      //                 shape: BoxShape.circle,
-                      //                 color: carouselIndex == entry.key
-                      //                     ? AppColors.primarytextColor
-                      //                     : Colors.grey.shade400),
-                      //           ),
-                      //         );
-                      //       }).toList(),
-                      //     ),
-                      //   ],
-                      // ),
                       CustomText(
                           text: "We wish you a great day !",
                           fontSize: MediaQuery.of(context).size.height / 28,
@@ -297,8 +197,6 @@ class _DashBoardState extends State<DashBoard> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => OurMagicalZap()));
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //     builder: (context) => InstaMojoDemo()));
                           },
                           child: Container(
                               height: MediaQuery.of(context).size.height / 9,
@@ -312,8 +210,6 @@ class _DashBoardState extends State<DashBoard> {
                                     top:
                                         MediaQuery.of(context).size.height / 34,
                                   ),
-                                  // child: Align(
-                                  //     // alignment: Alignment.bottomCenter,
                                   child: Column(children: [
                                     // SizedBox(
                                     // child:
@@ -374,7 +270,7 @@ class _DashBoardState extends State<DashBoard> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    ActivityHistory()));
+                                                    ActivityHistory(childId: childId!,userId: userID!,)));
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.only(
@@ -382,7 +278,10 @@ class _DashBoardState extends State<DashBoard> {
                                                     .size
                                                     .height /
                                                 15,
-                                            top: 12),
+                                            top: MediaQuery.of(context)
+                                                .size
+                                                .height /
+                                                80),
                                         child: CustomText(
                                           text: "Activity History",
                                           fontSize: MediaQuery.of(context)
@@ -421,12 +320,7 @@ class _DashBoardState extends State<DashBoard> {
                                 left: 10.0,
                                 top: MediaQuery.of(context).size.width / 17,
                               ),
-                              // child: Align(
-                              //     // alignment: Alignment.bottomCenter,
                               child: Column(
-                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                  // crossAxisAlignment: CrossAxisAlignment.end,
-                                  // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     // SizedBox(
                                     // child:
@@ -465,43 +359,6 @@ class _DashBoardState extends State<DashBoard> {
                                     //   height: 20,
                                     // )
                                   ]))),
-                      // CustomText(
-                      //   text: "Recommend For You",
-                      //   fontSize: 24,
-                      //   textColor: AppColors.primarytextColor2,
-                      //   align: TextAlign.left,
-                      // ),
-                      // SizedBox(height: 10,),
-                      // Container(
-                      //   height: MediaQuery.of(context).size.height / 5,
-                      //   width: MediaQuery.of(context).size.height / 4,
-                      //   decoration: BoxDecoration(
-                      //       color: AppColors.hhgreen,
-                      //       borderRadius: BorderRadius.circular(12)),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(
-                      //       left: 10.0,
-                      //       top: 30,
-                      //     ),
-                      //     child: Align(
-                      //       alignment: Alignment.bottomCenter,
-                      //       child: Column(
-                      //         mainAxisAlignment: MainAxisAlignment.end,
-                      //         crossAxisAlignment: CrossAxisAlignment.end,
-                      //         // crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           CustomText(
-                      //               text: "Recently Added",
-                      //               fontSize: 18,
-                      //               textColor: AppColors.primarytextColor),
-                      //           SizedBox(
-                      //             height: 20,
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
                       SizedBox(
                         height: 10,
                       ),
@@ -522,21 +379,6 @@ class _DashBoardState extends State<DashBoard> {
                         padding: EdgeInsets.fromLTRB(3, 0, 20, 0),
                         child: Column(
                           children: [
-                            // CustomText(
-                            //   text:
-                            //       "“Children are like flowers, tender shoots. They already have within them an inherent predisposition towards good. Bring this to fruition. They are God's gifts. Comprehend their worth. Do not belittle them. Nurture them so that they become firmly rooted in your Faith. Truly appreciate your children's worth.\"",
-                            //   fontSize: MediaQuery.of(context).size.height / 30,
-                            //   textColor: AppColors.primarytextColor2,
-                            //   align: TextAlign.justify,
-                            // ),
-                            // CustomText(
-                            //   text:
-                            //       "      -H.H. Dr.  Syedna Mohammed\nBurhanuddin",
-                            //   fontSize: MediaQuery.of(context).size.height / 30,
-                            //   textColor: AppColors.primarytextColor2,
-                            //   align: TextAlign.right,
-                            // ),
-
                             CustomText(
                               text: "“${dailyQuotes[currentQuoteIndex]}“",
                               fontSize: MediaQuery.of(context).size.height / 30,
@@ -547,47 +389,14 @@ class _DashBoardState extends State<DashBoard> {
                               text: "-${authors[currentQuoteIndex]}",
                               fontSize: MediaQuery.of(context).size.height / 30,
                               textColor: AppColors.primarytextColor2,
-                              align: TextAlign.right,
+                              align: TextAlign.left,
                             ),
                           ],
                         ),
                       ),
-                      // CustomeTextButton(
-                      //   borderColor: AppColors.transhparent,
-                      //   bacgroundColor: AppColors.hhblue,
-                      //   text:
-                      //
-                      //   "“Children are like flowers, tender shoots. They already have within them an inherent predisposition towards good. Bring this to fruition. They are God's gifts. Comprehend their worth. Do not belittle them. Nurture them so that they become firmly rooted in your Faith. Truly appreciate your children's worth.",
-                      //   textColor: AppColors.black,
-                      //   fontSize: 22,
-                      //   borderWidth: 0,
-                      //   textAlign: TextAlign.justify,
-                      //   width: MediaQuery.of(context).size.width / 1.2,
-                      //   height: MediaQuery.of(context).size.height/3.1,
-                      // ),
                     ],
                   ),
                 ),
-                // showDialog(context: context, builder: builder)
-                // HeartLoader()
-                // Center(
-                //   child: ElevatedButton(onPressed: (){
-                //     showDialog(
-                //       context: context,
-                //       barrierDismissible: false,
-                //       builder: (BuildContext context) {
-                //         return Dialog(
-                //           backgroundColor: Colors.transparent, // Make the dialog background transparent
-                //           elevation: 0, // Remove the shadow
-                //           child: Container(
-                //             color: Colors.transparent, // Make the container color transparent
-                //             child: HeartLoader(),
-                //           ),
-                //         );
-                //       },
-                //     );
-                //   }, child: Text("tap me")),
-                // )
               ],
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:happyheart/Constant/background.dart';
 import 'package:happyheart/data/model/login_model.dart';
 import 'package:happyheart/screens/OtpScreen/otpScreen.dart';
 import 'package:happyheart/screens/playrecording/free_audio_recording.dart';
-import 'package:happyheart/screens/signUpScreen.dart';
+import 'package:happyheart/screens/SignUpScreen/signUpScreen.dart';
 import 'package:happyheart/utils/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

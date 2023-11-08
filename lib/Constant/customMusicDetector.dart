@@ -42,7 +42,6 @@ class CustomMusicIndicator extends StatefulWidget {
 
 class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
   String? userId;
-
   String? childId;
 
   getUserId() async{

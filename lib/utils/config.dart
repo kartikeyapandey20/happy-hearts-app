@@ -11,4 +11,5 @@ class Config {
   static const getAudioByCategory = "getAudioByCategory";
   static const purchaseAudio = "addPurchase";
   static const audioStatus = "audioStatus";
+  static const getActivityHistory = "getActivityHistory";
 }

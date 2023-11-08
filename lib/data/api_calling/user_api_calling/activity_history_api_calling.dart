@@ -1,19 +1,20 @@
+
+
 import 'dart:convert';
-import 'package:happyheart/data/model/audio_status_model.dart';
-import 'package:happyheart/data/model/login_model.dart';
+
+import 'package:happyheart/data/model/activity_history_model.dart';
 import 'package:http/http.dart' as http;
 import '../../../utils/config.dart';
 
-class AudioApiCalling {
-  Future<AudioStatusModel?> audioStatusApiCalling({String? userId,String? childId,String? audioId}) async {
+class ActivityHistoryApi{
+  Future<ActivityHistoryModel?> audioStatusApiCalling({String? userId,String? childId}) async {
     try {
-      var url = Config.baseUserUrl + Config.audioStatus;
+      var url = Config.baseUserUrl + Config.getActivityHistory;
 
       // Create the JSON request body
       var body = jsonEncode({
         "userId" : userId,
-        "childId" : childId,
-        "audioId":audioId
+        "childId" : childId
       });
 
       // Make the POST request
@@ -25,7 +26,7 @@ class AudioApiCalling {
         // Request successful, do something with the response
         print('API response: ${response.body}');
         var json = jsonDecode(response.body);
-        return AudioStatusModel.fromJson(json);
+        return ActivityHistoryModel.fromJson(json);
       } else {
         // Request failed, handle error
         // var json = jsonDecode(response.body);
@@ -38,5 +39,4 @@ class AudioApiCalling {
     }
     return null;
   }
-
 }
