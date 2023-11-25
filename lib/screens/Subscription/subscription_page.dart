@@ -4,12 +4,12 @@ import 'package:happyheart/Constant/custom_purchase_audio.dart';
 import 'package:happyheart/data/model/subscribtion_model.dart';
 // import 'package:happyheart/data/api_calling/subscription_api_calling.dart';
 import 'package:happyheart/Constant/CustomText.dart';
-import 'package:happyheart/Constant/subscriptionContainer.dart';
 import 'package:happyheart/utils/colors.dart';
 import 'package:happyheart/utils/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Constant/customMusicDetector.dart';
+import '../../Constant/subscription_page_container.dart';
 import '../../data/api_calling/categoy_api_calling/category_api_calling.dart';
 import '../../data/model/audio_category_model.dart';
 import '../../data/model/category_model.dart';
@@ -93,7 +93,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                       child: ListView.builder(
                           itemCount: data![0].audios!.length,
                           itemBuilder: (context, index) {
-                            return CustomPurchaseAudio(
+                            return SubscriptionPageContainer(
                               Image:
                               "${Config.imageUserUrl}${data[0].audios![index].imageUrl}",
                               text: "${data[0].audios![index].audioName}",
@@ -107,7 +107,12 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                                   : index % 3 == 1
                                   ? AppColors.hhblue
                                   : AppColors.hhpink,
-                              audioName: "${data[0].audios![index].musicName}", audioId: data[0].audios![index].sId!, userId: userId!, childId: childId!, duration: data[0].audios![index].audioDuration!, price: data[0].audios![index].audioPrice!,
+                              audioName: "${data[0].audios![index].musicName}",
+                              audioId: data[0].audios![index].sId!,
+                              userId: userId!,
+                              childId: childId!,
+                              audioDuration: data[0].audios![index].audioDuration!,
+                              audioPrice: data[0].audios![index].audioPrice!,
 
                             );
                           }),

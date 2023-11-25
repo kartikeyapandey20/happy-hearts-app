@@ -4,6 +4,7 @@ import 'package:happyheart/screens/playrecording/playrecording.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/api_calling/user_api_calling/audio_status_api_calling.dart';
 import '../data/model/audio_status_model.dart';
+import '../screens/Subscription/single_audio_subscription_page.dart';
 import '../utils/colors.dart';
 import 'CustomText.dart';
 import 'loader.dart';
@@ -21,6 +22,8 @@ class CustomMusicIndicator extends StatefulWidget {
   final String gujaratiUrl;
   final String audioId;
   final List<String> zapInstruction;
+  final String audioDuration;
+  final String audioPrice;
   CustomMusicIndicator(
       {Key? key,
       this.logoColor,
@@ -33,7 +36,7 @@ class CustomMusicIndicator extends StatefulWidget {
       required this.englishUrl,
       required this.hindiUrl,
       required this.gujaratiUrl,
-      required this.zapInstruction, required this.audioId})
+      required this.zapInstruction, required this.audioId, this.audioDuration="15 Days", this.audioPrice = "399"})
       : super(key: key);
 
   @override
@@ -48,20 +51,6 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     userId = preferences.getString("userId");
     childId = preferences.getString("childId");
-  }
-  Future<void> showLoader() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: HeartLoader(),
-          ),
-        );
-      },
-    );
   }
   void checkAudioStatus(String userid ,String childId,String audioId ) async {
     showLoader(); // Show the loader dialog
@@ -84,8 +73,8 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
 
 
         } else {
-          // User does not exist
-          Navigator.of(context).pop();
+          // User has not purchased the audio
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,)));
           Fluttertoast.showToast(msg: "Audio Not Purchased");
         }
       } else {
@@ -96,6 +85,20 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
       print('API request failed with error: $e');
       Fluttertoast.showToast(msg: "Failed to login. Please try again.");
     }
+  }
+  Future<void> showLoader() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: HeartLoader(),
+          ),
+        );
+      },
+    );
   }
 
   @override

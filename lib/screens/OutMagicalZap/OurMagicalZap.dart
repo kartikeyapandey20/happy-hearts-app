@@ -215,6 +215,8 @@ class _OurMagicalZapState extends State<OurMagicalZap> {
                               zapInstruction:
                                   data[0].audios![index].audioInstruction!,
                               audioId: data[0].audios![index].sId!,
+                              audioDuration: data[0].audios![index].audioDuration!,
+                                audioPrice : data[0].audios![index].audioPrice!
                             );
                           }),
                     );

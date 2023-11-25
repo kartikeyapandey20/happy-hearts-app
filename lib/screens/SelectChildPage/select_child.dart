@@ -11,19 +11,19 @@ import '../../../Constant/background.dart';
 import '../../../Constant/customTextButtton.dart';
 import '../../../data/model/add_user_child_model.dart';
 import '../../../utils/image_path.dart';
-import '../dashBoard.dart';
-import 'add_child_information_page.dart';
+import '../Dashboard/Drawer/add_child_information_page.dart';
+import '../Dashboard/dashBoard.dart';
 
-class AddChild extends StatefulWidget {
+class SelectChild extends StatefulWidget {
 
   final String userId;
-  AddChild({Key? key, required this.userId}) : super(key: key);
+  SelectChild({Key? key, required this.userId}) : super(key: key);
 
   @override
-  State<AddChild> createState() => _AddChildState();
+  State<SelectChild> createState() => _SelectChildState();
 }
 
-class _AddChildState extends State<AddChild> {
+class _SelectChildState extends State<SelectChild> {
   TextEditingController textConst = TextEditingController();
   TextEditingController Agecont = TextEditingController();
   Future<UserChildrenModel?>? _futureUserChildren;
@@ -58,7 +58,7 @@ class _AddChildState extends State<AddChild> {
               padding:
                   EdgeInsets.only(left: MediaQuery.of(context).size.width / 12),
               child: CustomText(
-                text: "Add Child",
+                text: "Select Child",
                 fontSize: 33,
                 textColor: AppColors.appPrimaryColor,
               ),
@@ -116,7 +116,7 @@ class _AddChildState extends State<AddChild> {
                                     Navigator.of(context).pop();
                                   }
                                   else if(response.isSuccess!){
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DashBoard()));
+                                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> DashBoard()), (route) => false);
                                     SharedPreferences preferences = await SharedPreferences.getInstance();
                                     preferences.setString("childId", data[index].sId!);
                                     preferences.setString("childName",data[index].childName!);

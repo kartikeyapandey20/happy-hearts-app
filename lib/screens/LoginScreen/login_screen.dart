@@ -72,13 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
         } else {
           // User does not exist
           Fluttertoast.showToast(msg: "User does not exist");
+          Navigator.of(context).pop();
         }
       } else {
         // Error occurred during API call
         Fluttertoast.showToast(msg: "Failed to login. Please try again.");
+        Navigator.of(context).pop();
       }
     } catch (e) {
       print('API request failed with error: $e');
+      Navigator.of(context).pop();
       Fluttertoast.showToast(msg: "Failed to login. Please try again.");
     }
   }

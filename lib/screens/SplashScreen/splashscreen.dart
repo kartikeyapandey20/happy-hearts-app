@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:happyheart/screens/Dashboard/dashBoard.dart';
+// import 'package:happyheart/screens/Dashboard/dashBoard.dart';
+import 'package:happyheart/screens/SelectChildPage/select_child.dart';
 import 'package:happyheart/screens/getStarted/get_started.dart';
 import 'package:happyheart/utils/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,15 +17,20 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool? name;
+  String? userId;
+  AudioPlayer audioPlayer = AudioPlayer();
   getDataFromSession() async{
     SharedPreferences preferences = await SharedPreferences.getInstance();
     name = preferences.getBool("login");
+
+    userId = preferences.getString("userId");
   }
   @override
   void initState() {
     super.initState();
     getDataFromSession();
     print(name);
+    audioPlayer.play(AssetSource("audio/Intro.mp3"));
     // FlutterSound flutterSound = FlutterSound();
     // flutterSound.thePlayer.startPlayer(fromURI: 'assets/test.mp3');
     Timer(Duration(seconds: 5),
@@ -33,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 )
             ): Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
-                (context) => DashBoard()
+                (context) => SelectChild(userId: userId!)
             )
         )
     );

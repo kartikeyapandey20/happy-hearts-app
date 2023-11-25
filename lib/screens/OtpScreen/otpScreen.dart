@@ -26,7 +26,7 @@ class _OtpScreenState extends State<OtpScreen> {
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   final FirebaseAuth auth = FirebaseAuth.instance;
-
+  bool isLoading = false;
   Timer? _timer;
   int _resendDuration = 120; // 2 minutes
   bool _isCodeInvalid = false;
@@ -115,6 +115,9 @@ class _OtpScreenState extends State<OtpScreen> {
         (value) {
           if (value.user != null) {
             print('pass to home');
+            setState(() {
+              isLoading = false;
+            });
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (context) => DashBoard(),
@@ -122,6 +125,9 @@ class _OtpScreenState extends State<OtpScreen> {
               (route) => false,
             );
           } else {
+            setState(() {
+              isLoading = false;
+            });
             Fluttertoast.showToast(msg: "Invalid OTP");
           }
         },
@@ -130,6 +136,9 @@ class _OtpScreenState extends State<OtpScreen> {
       print("Invalid Otp");
       setState(() {
         _isCodeInvalid = true;
+      });
+      setState(() {
+        isLoading = false;
       });
     }
   }
@@ -234,7 +243,9 @@ class _OtpScreenState extends State<OtpScreen> {
                               print("Invalid Otp");
                               setState(() {
                                 _isCodeInvalid = true;
+                                isLoading  = false;
                               });
+
                             }
                           },
                           onChanged: (value) {
@@ -292,13 +303,16 @@ class _OtpScreenState extends State<OtpScreen> {
                             // );
                             String pin = pinController.text;
                             if (pin.isNotEmpty) {
+                              setState(() {
+                                isLoading = true;
+                              });
                               _verifyOtp(pin);
                             }
                           } else {
                             Fluttertoast.showToast(msg: "Error occurred");
                           }
                         },
-                        child: Center(
+                        child: isLoading?Center(child: CircularProgressIndicator(color: AppColors.appPrimaryColor,),):Center(
                           child: CustomeTextButton(
                             width: MediaQuery.of(context).size.width / 1.2,
                             borderColor: Color(0xFFFFFFFF),

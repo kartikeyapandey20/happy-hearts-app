@@ -130,6 +130,7 @@ class _DashBoardState extends State<DashBoard> {
         drawer: NavDrawer(
           name: name,
           onProfileImageSelected: null,
+          userId: userID!,
         ),
         body: YellowBacground(
           child: SingleChildScrollView(
@@ -385,11 +386,14 @@ class _DashBoardState extends State<DashBoard> {
                               textColor: AppColors.primarytextColor2,
                               align: TextAlign.justify,
                             ),
-                            CustomText(
-                              text: "-${authors[currentQuoteIndex]}",
-                              fontSize: MediaQuery.of(context).size.height / 30,
-                              textColor: AppColors.primarytextColor2,
-                              align: TextAlign.left,
+                            Padding(
+                              padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/2),
+                              child: CustomText(
+                                text: "-${authors[currentQuoteIndex]}",
+                                fontSize: MediaQuery.of(context).size.height / 30,
+                                textColor: AppColors.primarytextColor2,
+                                align: TextAlign.left,
+                              ),
                             ),
                           ],
                         ),

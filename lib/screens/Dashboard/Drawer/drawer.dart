@@ -18,8 +18,8 @@ import 'add_child.dart';
 
 class NavDrawer extends StatefulWidget {
   final String name;
-  NavDrawer({super.key, required this.name, required onProfileImageSelected});
-
+  final String userId;
+  NavDrawer({super.key, required this.name, required onProfileImageSelected, required this.userId});
   @override
   State<NavDrawer> createState() => _NavDrawerState();
 }
@@ -209,7 +209,7 @@ class _NavDrawerState extends State<NavDrawer> {
                     ),
                     onTap: () => {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => AddChild()))
+                          MaterialPageRoute(builder: (context) => AddChild(userId: widget.userId,)))
                     },
                   ),
                   SizedBox(
