@@ -50,21 +50,22 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBHEL0QiWs-MjXTkQSEAFuDmkTruM6QrL0',
-    appId: '1:991332688559:android:ed9b42d0225f2c84c9ea5a',
-    messagingSenderId: '991332688559',
-    projectId: 'happyhearts-aed0a',
-    storageBucket: 'happyhearts-aed0a.appspot.com',
+    apiKey: 'AIzaSyAKjiPSs9HDut1r23YkgxlDgNluuXNn87Y',
+    appId: '1:102630465950:android:fa13873f6060852daa768f',
+    messagingSenderId: '102630465950',
+    projectId: 'beontime-cfd0d',
+    databaseURL: 'https://beontime-cfd0d.firebaseio.com',
+    storageBucket: 'beontime-cfd0d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBPqrdf1nGCEoTc_fS0EWfNS1Tq1XmXKU0',
-    appId: '1:991332688559:ios:66bf6cd9d0a0f030c9ea5a',
-    messagingSenderId: '991332688559',
-    projectId: 'happyhearts-aed0a',
-    storageBucket: 'happyhearts-aed0a.appspot.com',
-    androidClientId: '991332688559-lop2qio5fc9bh2jv46gdeb81k32hvv7j.apps.googleusercontent.com',
-    iosClientId: '991332688559-c0glod1rnaqqrn0jjs8cu6nkqblnld8s.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD5Ds-U2ad_8fQzT5rBmqMIuxrVKIg0MpI',
+    appId: '1:102630465950:ios:27935fb28890ff12aa768f',
+    messagingSenderId: '102630465950',
+    projectId: 'beontime-cfd0d',
+    databaseURL: 'https://beontime-cfd0d.firebaseio.com',
+    storageBucket: 'beontime-cfd0d.appspot.com',
+    androidClientId: '102630465950-71tq28ju79qpgev5g51k0h5le7nsc6ln.apps.googleusercontent.com',
     iosBundleId: 'com.itufuturz.happyhearts',
   );
 }

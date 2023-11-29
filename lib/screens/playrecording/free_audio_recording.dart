@@ -115,35 +115,37 @@ class _FreePlayRecordingState extends State<FreePlayRecording> {
                     ),
                     Image.asset(ImagePath.smallhhlogo),
                     Spacer(),
-                    Icon(
-                      Icons.favorite,
-                      color: AppColors.appPrimaryColor,
-                    ),
+                    // Icon(
+                    //   Icons.favorite,
+                    //   color: AppColors.appPrimaryColor,
+                    // ),
                   ],
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 5,
+                height: MediaQuery.of(context).size.height / 15,
               ),
-              // InkWell(
-              //   onTap: () {
-              //     Fluttertoast.showToast(msg: "No instruction for Free Audio");
-              //   },
-              //   child: CustomeTextButton(
-              //     width: MediaQuery.of(context).size.width / 1.1,
-              //     padding: MediaQuery.of(context).size.height / 20,
-              //     borderColor: AppColors.borderColor,
-              //     text: 'Zap Instruction',
-              //     borderWidth: 2,
-              //     bacgroundColor: AppColors.appPrimaryColor,
-              //   ),
-              // ),
+              InkWell(
+                onTap: () {
+                  // Fluttertoast.showToast(msg: "No instruction for Free Audio");
+                },
+                child: CustomeTextButton(
+                  width: MediaQuery.of(context).size.width / 1.14,
+                  padding: 8,
+                  borderColor: AppColors.borderColor,
+                  text: 'Gift This to Your Loved Ones',
+                  fontSize: 25,
+                  borderWidth: 2,
+                  fontWeight: FontWeight.bold,
+                  bacgroundColor: AppColors.appPrimaryColor,
+                ),
+              ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 5,
+                height: MediaQuery.of(context).size.height / 4,
               ),
               CustomText(
-                text: "Free Audio",
-                fontSize: 35,
+                text: "Floating Smiles -Happy Hearts",
+                fontSize: 30,
                 textColor: AppColors.black,
               ),
               SizedBox(
@@ -188,14 +190,16 @@ class _FreePlayRecordingState extends State<FreePlayRecording> {
                   ],
                 ),
               ),
-
+              SizedBox(
+                height: MediaQuery.of(context).size.height /50,
+              ),
               // Language Options Buttons
               Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height / 35,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
                       onPressed: () {

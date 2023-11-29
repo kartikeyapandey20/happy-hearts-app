@@ -10,6 +10,7 @@ class AppColors{
   static const Color blue  = Colors.blue;
   static const Color black  = Colors.black;
   static const Color hhred  = Colors.red;
+  static const Color yellow  = Colors.yellowAccent;
   static const Color transhparent = Colors.transparent;
   static const Color borderColorOurMagicalZap = Color(0xFF2A919A);
   static const Color hhgreen = Color(0xFFD6EA84);

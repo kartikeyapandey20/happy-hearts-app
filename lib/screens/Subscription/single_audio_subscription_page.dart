@@ -16,8 +16,10 @@ class SingAudioSubscriptionPage extends StatefulWidget {
   final String musicName;
   final String imageUrl;
   final Color color;
+  final String userId;
+  final String childId;
   SingAudioSubscriptionPage(
-      {Key? key, required this.audioPrice, required this.audioDuration, required this.sId, required this.musicName, required this.imageUrl, required this.color,})
+      {Key? key, required this.audioPrice, required this.audioDuration, required this.sId, required this.musicName, required this.imageUrl, required this.color, required this.userId, required this.childId,})
       : super(key: key);
   @override
   _SingAudioSubscriptionPageState createState() => _SingAudioSubscriptionPageState();
@@ -82,8 +84,8 @@ class _SingAudioSubscriptionPageState extends State<SingAudioSubscriptionPage> {
     imageCirucularColor: widget.color ,
     audioName: "${widget.musicName}",
       audioId: widget.sId,
-      userId: userId!,
-      childId: childId!,
+      userId: widget.userId,
+      childId: widget.childId,
       duration: widget.audioDuration,
       price: widget.audioPrice,
       ContainerColor: widget.color,

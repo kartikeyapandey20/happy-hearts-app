@@ -74,7 +74,7 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
 
         } else {
           // User has not purchased the audio
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,childId: childId,userId: userid,)));
           Fluttertoast.showToast(msg: "Audio Not Purchased");
         }
       } else {

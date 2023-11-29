@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:happyheart/Constant/CustomText.dart';
 import 'package:happyheart/Constant/background.dart';
 import 'package:happyheart/Constant/customTextButtton.dart';
+import 'package:happyheart/Constant/heart_loader.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/colors.dart';
@@ -115,9 +116,11 @@ class _OtpScreenState extends State<OtpScreen> {
         (value) {
           if (value.user != null) {
             print('pass to home');
-            setState(() {
-              isLoading = false;
-            });
+            // setState(() {
+            //   isLoading = false;
+            // });
+            setData();
+            Navigator.of(context).pop();
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (context) => DashBoard(),
@@ -125,21 +128,26 @@ class _OtpScreenState extends State<OtpScreen> {
               (route) => false,
             );
           } else {
-            setState(() {
-              isLoading = false;
-            });
+            // setState(() {
+            //   isLoading = false;
+            // });
+            Navigator.of(context).pop();
             Fluttertoast.showToast(msg: "Invalid OTP");
           }
         },
       );
     } catch (e) {
+      Navigator.pop(context);
+      print(e);
       print("Invalid Otp");
       setState(() {
         _isCodeInvalid = true;
       });
-      setState(() {
-        isLoading = false;
-      });
+      // setState(() {
+      //   isLoading = false;
+      // });
+      Fluttertoast.showToast(msg: "Invalid OTP");
+
     }
   }
 
@@ -229,6 +237,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 (value) async {
                                   if (value.user != null) {
                                     print('pass to home');
+                                    setData();
                                     Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                         builder: (context) => DashBoard(),
@@ -243,9 +252,8 @@ class _OtpScreenState extends State<OtpScreen> {
                               print("Invalid Otp");
                               setState(() {
                                 _isCodeInvalid = true;
-                                isLoading  = false;
                               });
-
+                                Navigator.of(context).pop();
                             }
                           },
                           onChanged: (value) {
@@ -293,7 +301,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             // Form is valid, execute logic
-                            setData();
+
                             // print('pass to home');
                             // Navigator.of(context).pushAndRemoveUntil(
                             //   MaterialPageRoute(
@@ -303,16 +311,26 @@ class _OtpScreenState extends State<OtpScreen> {
                             // );
                             String pin = pinController.text;
                             if (pin.isNotEmpty) {
-                              setState(() {
-                                isLoading = true;
-                              });
+                              // setState(() {
+                              //   isLoading = true;
+                              // });
+                              CustomLoader().showLoader(context);
                               _verifyOtp(pin);
                             }
                           } else {
                             Fluttertoast.showToast(msg: "Error occurred");
                           }
                         },
-                        child: isLoading?Center(child: CircularProgressIndicator(color: AppColors.appPrimaryColor,),):Center(
+                        // child: isLoading?Center(child: CircularProgressIndicator(color: AppColors.appPrimaryColor,),):Center(
+                        //   child: CustomeTextButton(
+                        //     width: MediaQuery.of(context).size.width / 1.2,
+                        //     borderColor: Color(0xFFFFFFFF),
+                        //     bacgroundColor: Color(0xFFFA4A71),
+                        //     text: "Verification",
+                        //     borderWidth: 2,
+                        //   ),
+                        // ),
+                        child: Center(
                           child: CustomeTextButton(
                             width: MediaQuery.of(context).size.width / 1.2,
                             borderColor: Color(0xFFFFFFFF),
@@ -351,8 +369,8 @@ class _OtpScreenState extends State<OtpScreen> {
                       text: ' Resend',
                       fontSize: MediaQuery.of(context).size.height / 35,
                       textColor: _resendDuration > 0
-                          ? AppColors.hhred
-                          : AppColors.hhred,
+                          ? AppColors.yellow
+                          : AppColors.yellow,
                       fontWeight: _resendDuration > 0
                           ? FontWeight.bold
                           : FontWeight.bold,

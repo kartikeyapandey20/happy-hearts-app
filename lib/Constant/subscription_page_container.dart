@@ -40,7 +40,7 @@ class _SubscriptionPageContainerState extends State<SubscriptionPageContainer> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,userId: widget.userId, childId: widget.childId,)));
         // Navigator.of(context).push(MaterialPageRoute(
         //     builder: (context) => InstaMojoDemo(
         //       userId: widget.userId,
