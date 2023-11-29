@@ -73,11 +73,11 @@ class ChildApiCalling {
   }
   Future<AddUserChildrenModel?> updateChildIdApiCalling({required String userId,required String childId}) async {
     try {
-      var url = Config.baseUserUrl + Config.addChildToUser;
+      var url = Config.baseUserUrl + Config.updateChildId;
 
       // Create the JSON request body
       var body = jsonEncode({
-        "childName" : childId,
+        "childId" : childId,
         "userId" : userId
       });
       print(body);

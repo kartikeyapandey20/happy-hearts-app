@@ -8,6 +8,7 @@ import 'package:happyheart/screens/Dashboard/Drawer/profie_update_screen.dart';
 import 'package:happyheart/screens/MyFavourite/my_favourite.dart';
 import 'package:happyheart/screens/Subscription/subscription_page.dart';
 import 'package:happyheart/screens/SignUpScreen/signUpScreen.dart';
+import 'package:happyheart/screens/getStarted/get_started.dart';
 import 'package:happyheart/utils/colors.dart';
 import 'package:happyheart/utils/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -278,7 +279,7 @@ class _NavDrawerState extends State<NavDrawer> {
                       preferences.clear();
                       Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                              builder: (context) => SignUpScreen()),
+                              builder: (context) => GetStarted()),
                           (route) => false);
                     },
                   ),

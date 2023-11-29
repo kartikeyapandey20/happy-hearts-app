@@ -14,4 +14,5 @@ class Config {
   static const getActivityHistory = "getActivityHistory";
   static const getUserChildren = "getUserChildren";
   static const addChildToUser = "addChildToUser";
+  static const updateChildId = "updateChildId";
 }

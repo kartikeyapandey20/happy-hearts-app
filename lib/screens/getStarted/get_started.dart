@@ -257,6 +257,7 @@ class _GetStartedState extends State<GetStarted> {
       Container(
         child: Column(
           children: [
+            SizedBox(height: MediaQuery.of(context).size.height/10,),
             Image.asset(
               ImagePath.boyLogo,
               height: MediaQuery.of(context).size.height / 3.9,

@@ -129,15 +129,15 @@ class _HowOldIsYourChildScreenState extends State<HowOldIsYourChildScreen> {
                   //   ),
                   //    itemBuilder: (context, index) {
                   //     return
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          showLoader();
-                          postDataAndNavigate();
-                        },
-                        child: CircleAvatar(
+                  InkWell(
+                    onTap: (){
+                      showLoader();
+                      postDataAndNavigate();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
                           radius: 70,
                           backgroundColor: AppColors.hhpink,
                           child: Container(
@@ -155,68 +155,136 @@ class _HowOldIsYourChildScreenState extends State<HowOldIsYourChildScreen> {
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height / 12,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: AppColors.hhpink,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomText(
-                                text: "3-8 Years",
-                                fontSize:
-                                    MediaQuery.of(context).size.height / 30,
-                                textColor: AppColors.primarytextColor),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Opacity(
-                          opacity: .7,
-                          child: CircleAvatar(
-                            radius: 70,
-                            backgroundColor: AppColors.blue,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: Colors.white, width: 5)),
-                              child: CircleAvatar(
-                                backgroundImage: AssetImage(
-                                  ImagePath.nintoThirteen,
-                                ),
-                                radius: 60,
-                              ),
-                            ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 12,
+                          width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: AppColors.hhpink,
                           ),
-                        ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height / 12,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: AppColors.blue,
-                        ),
-                        child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomText(
-                                  text: "8-12 Years",
+                                  text: "3-8 Years",
+                                  fontSize:
+                                      MediaQuery.of(context).size.height / 30,
+                                  textColor: AppColors.primarytextColor),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 20,
+                  ),
+                  InkWell(
+                    onTap: (){
+                      showLoader();
+                      postDataAndNavigate();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Opacity(
+                            opacity: .7,
+                            child: CircleAvatar(
+                              radius: 70,
+                              backgroundColor: AppColors.hhblue,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: Colors.white, width: 5)),
+                                child: CircleAvatar(
+                                  backgroundImage: AssetImage(
+                                    ImagePath.nintoThirteen,
+                                  ),
+                                  radius: 60,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 12,
+                          width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: AppColors.hhblue,
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomText(
+                                    text: "8-12 Years",
+                                    fontSize:
+                                        MediaQuery.of(context).size.height / 30,
+                                    textColor: AppColors.primarytextColor),
+                                CustomText(
+                                    text: "(Coming soon)",
+                                    fontSize: 16,
+                                    textColor: AppColors.primarytextColor),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 20,
+                  ),
+                  InkWell(
+                    onTap: (){
+                      showLoader();
+                      postDataAndNavigate();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Opacity(
+                                opacity: .7,
+                                child: CircleAvatar(
+                                  radius: 75,
+                                  backgroundColor: AppColors.hhgreen,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.white, width: 5),
+                                        shape: BoxShape.circle),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                        ImagePath.thirteenPlus,
+                                      ),
+                                      radius: 65,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 12,
+                          width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: AppColors.hhgreen,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomText(
+                                  text: "13+ Years",
                                   fontSize:
                                       MediaQuery.of(context).size.height / 30,
                                   textColor: AppColors.primarytextColor),
@@ -226,65 +294,9 @@ class _HowOldIsYourChildScreenState extends State<HowOldIsYourChildScreen> {
                                   textColor: AppColors.primarytextColor),
                             ],
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Opacity(
-                              opacity: .7,
-                              child: CircleAvatar(
-                                radius: 75,
-                                backgroundColor: AppColors.hhgreen,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.white, width: 5),
-                                      shape: BoxShape.circle),
-                                  child: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                      ImagePath.thirteenPlus,
-                                    ),
-                                    radius: 65,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height / 12,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: AppColors.hhgreen,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomText(
-                                text: "13+ Years",
-                                fontSize:
-                                    MediaQuery.of(context).size.height / 30,
-                                textColor: AppColors.primarytextColor),
-                            CustomText(
-                                text: "(Coming soon)",
-                                fontSize: 16,
-                                textColor: AppColors.primarytextColor),
-                          ],
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   )
                   // SizedBox(
 //             height: 20,
