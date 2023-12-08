@@ -387,7 +387,7 @@ class _DashBoardState extends State<DashBoard> {
                               align: TextAlign.justify,
                             ),
                             Padding(
-                              padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/2),
+                              padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/3),
                               child: CustomText(
                                 text: "-${authors[currentQuoteIndex]}",
                                 fontSize: MediaQuery.of(context).size.height / 30,

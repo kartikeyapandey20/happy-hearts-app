@@ -56,7 +56,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(child: CustomText(text: "No new Notificatioon", fontSize: 18, textColor: AppColors.black),)
+                  Center(child: CustomText(text: "No new Notification", fontSize: 18, textColor: AppColors.black),)
                 ],
                 // children: [
                 //   CustomText(

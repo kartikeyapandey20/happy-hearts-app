@@ -49,7 +49,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20,right: 19),
-                child: CustomText(text: "We look forward to hearing from you. Let’s undertake this healing journey together", fontSize: 23, textColor: AppColors.primarytextColor,align: TextAlign.justify),
+                child: CustomText(text: "We look forward to hearing from you. Let’s undertake this healing journey together.", fontSize: 23, textColor: AppColors.primarytextColor,align: TextAlign.justify),
               ),
               SizedBox(height: MediaQuery.of(context).size.height/22,),
               CustomTextFormFieldWithLabel(lablelText: "Name", IsValidate: true),

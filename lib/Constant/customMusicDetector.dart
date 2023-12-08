@@ -36,7 +36,10 @@ class CustomMusicIndicator extends StatefulWidget {
       required this.englishUrl,
       required this.hindiUrl,
       required this.gujaratiUrl,
-      required this.zapInstruction, required this.audioId, this.audioDuration="15 Days", this.audioPrice = "399"})
+      required this.zapInstruction,
+      required this.audioId,
+      this.audioDuration = "15 Days",
+      this.audioPrice = "399"})
       : super(key: key);
 
   @override
@@ -47,34 +50,44 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
   String? userId;
   String? childId;
 
-  getUserId() async{
+  getUserId() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     userId = preferences.getString("userId");
     childId = preferences.getString("childId");
   }
-  void checkAudioStatus(String userid ,String childId,String audioId ) async {
+
+  void checkAudioStatus(String userid, String childId, String audioId) async {
     showLoader(); // Show the loader dialog
 
     try {
-      final AudioStatusModel? response =
-      await AudioApiCalling().audioStatusApiCalling(userId: userid,childId: childId,audioId: audioId);
+      final AudioStatusModel? response = await AudioApiCalling()
+          .audioStatusApiCalling(
+              userId: userid, childId: childId, audioId: audioId);
 
       if (response != null && response.isSuccess!) {
         if (response.data!.audioPurchase!) {
           Navigator.of(context).pop();
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => PlayRecording(
-                audioName: widget.audioName,
-                englishUrl: widget.englishUrl,
-                hindiUrl: widget.hindiUrl,
-                gujaratiUrl: widget.gujaratiUrl,
-                zapInstruction: widget.zapInstruction,
-              )));
-
-
+                    audioName: widget.audioName,
+                    englishUrl: widget.englishUrl,
+                    hindiUrl: widget.hindiUrl,
+                    gujaratiUrl: widget.gujaratiUrl,
+                    zapInstruction: widget.zapInstruction,
+                  )));
         } else {
           // User has not purchased the audio
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SingAudioSubscriptionPage(audioPrice: widget.audioPrice, audioDuration: widget.audioDuration, sId: widget.audioId, musicName: widget.audioName, imageUrl: widget.Image, color: widget.imageCirucularColor,childId: childId,userId: userid,)));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => SingAudioSubscriptionPage(
+                    audioPrice: widget.audioPrice,
+                    audioDuration: widget.audioDuration,
+                    sId: widget.audioId,
+                    musicName: widget.audioName,
+                    imageUrl: widget.Image,
+                    color: widget.imageCirucularColor,
+                    childId: childId,
+                    userId: userid,
+                  )));
           Fluttertoast.showToast(msg: "Audio Not Purchased");
         }
       } else {
@@ -86,6 +99,7 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
       Fluttertoast.showToast(msg: "Failed to login. Please try again.");
     }
   }
+
   Future<void> showLoader() async {
     showDialog(
       context: context,
@@ -112,7 +126,7 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        checkAudioStatus(userId!,childId!, widget.audioId);
+        checkAudioStatus(userId!, childId!, widget.audioId);
       },
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,31 +178,31 @@ class _CustomMusicIndicatorState extends State<CustomMusicIndicator> {
                           ),
                         ),
                       ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          LayoutBuilder(
-                            builder: (BuildContext context,
-                                BoxConstraints constraints) {
-                              return Container(
-                                height: 20,
-                                width: 20,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.borderColor,
-                                ),
-                                child: Icon(
-                                  widget.icon,
-                                  color: widget.logoColor,
-                                  size: 10,
-                                ),
-                              );
-                            },
-                          )
-                        ],
-                      )
+                      // Column(
+                      //   children: [
+                      //     SizedBox(
+                      //       height: 10,
+                      //     ),
+                      //     LayoutBuilder(
+                      //       builder: (BuildContext context,
+                      //           BoxConstraints constraints) {
+                      //         return Container(
+                      //           height: 20,
+                      //           width: 20,
+                      //           decoration: BoxDecoration(
+                      //             shape: BoxShape.circle,
+                      //             color: AppColors.borderColor,
+                      //           ),
+                      //           child: Icon(
+                      //             widget.icon,
+                      //             color: widget.logoColor,
+                      //             size: 10,
+                      //           ),
+                      //         );
+                      //       },
+                      //     )
+                      //   ],
+                      // )
                     ],
                   ),
                 ),

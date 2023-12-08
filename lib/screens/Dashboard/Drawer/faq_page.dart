@@ -35,7 +35,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
   ];
 
   List<String> technicalAnswerss = [
-    "When you put a The The The Happy hearts Club subscription on pause, it will only pause after the current billing cycle. Tap the \nprofile icon in the bottom right corner - Subscriptions - You can pause a subscription by choosing it.",
+    "When you put your subscription with The Happy Hearts Club on pause, it will only pause after the current billing cycle. Tap the profile icon in the bottom right corner - Subscriptions - You can pause a subscription by choosing it.",
     "Tap on the profile icon in the bottom right corner - Subscriptions – Choose the cycle you no longer want to pay for, scroll to the bottom and hit the ‘Cancel Subscription button’",
     "On your Android phone or iOS tablet, open your app's Settings. Tap 'Manage your  The Happy hearts Account'.At the top, tap Payments & Subscriptions.Tap Manage purchases, Manage subscriptions or Manage reservations.To see more details, select an item.",
     "On your Android phone or tablet, open your app's Settings. Tap 'Manage your The Happy hearts Account' -- Personal info.Under \"Basic info, \" update your profile according to your preferences.Tap 'Accept', once done.",
@@ -108,10 +108,10 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                 ),
                 tabs: const [
                   Tab(
-                    text: 'Techinical FAQ',
+                    text: 'Technical FAQ',
                   ),
                   Tab(
-                    text: 'Non Techinical FAQ',
+                    text: 'Non-Technical FAQ',
                   )
                 ],
                 onTap: (index) {

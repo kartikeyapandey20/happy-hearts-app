@@ -70,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
                 child: CustomText(
                     text:
-                        "Welcome to The Happy Hearts. Club Create an account to transcend into the magical journey of profound healing for your child.",
+                        "Welcome to The Happy Hearts! Club Create an account to transcend into the magical journey of profound healing for your child.",
                     fontSize: MediaQuery.of(context).size.height / 33,
                     textColor: AppColors.primarytextColor,
                     align: TextAlign.justify),

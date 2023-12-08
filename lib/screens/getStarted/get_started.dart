@@ -104,7 +104,7 @@ class _GetStartedState extends State<GetStarted> {
                           )),
                       TextSpan(
                           text:
-                              "Support and help them overcome prolonged and every-   day problems by embarking on this transformational journey of deep cellular healing.",
+                              ".Support and help them overcome prolonged and every-   day problems by embarking on this transformational journey of deep cellular healing.",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.height / 38,
                             color: AppColors.primarytextColor,
@@ -285,7 +285,7 @@ class _GetStartedState extends State<GetStarted> {
               child: RichText(
                 text: TextSpan(
                     text:
-                        "The time will never be just right. Get the most out of this wallet-friendly sale  TODAY.",
+                        "The time will never be just right. Get the most out of this wallet-friendly sale TODAY!",
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.height / 38,
                       color: AppColors.primarytextColor,
